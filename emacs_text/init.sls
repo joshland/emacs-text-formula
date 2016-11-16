@@ -60,7 +60,7 @@ https://github.com/jrblevin/markdown-mode.git:
     - contents: |
         (mapc 'load
         (directory-files "/usr/share/emacs/site-lisp/yaml-mode/" t "^[^#].*el$"))
-	(add-to-list 'load-path "/usr/share/emacs/site-lisp/markdown-mode")
+        (add-to-list 'load-path "/usr/share/emacs/site-lisp/markdown-mode")
         
         (put 'downcase-region 'disabled nil)
         ;; Only spaces, no tabs
