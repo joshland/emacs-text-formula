@@ -13,7 +13,8 @@ emacs:
 /usr/share/emacs/site-lisp:
   archive.extracted:
     - archive_format: tar
-    - source: http://download.savannah.gnu.org/releases/color-theme/color-theme-6.6.0.tar.gz
+    - source: salt://emacs_text/files/color-theme-6.6.0.tar.gz
+    - if_missing: /usr/share/emacs/site-lisp/color-theme-6.6.0
 {% endif %}
 
 https://github.com/purcell/color-theme-sanityinc-tomorrow.git:
