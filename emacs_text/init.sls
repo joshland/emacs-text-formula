@@ -8,6 +8,7 @@ emacs:
           {% elif grains['os_family'] == 'Debian' %}
           - emacs24-nox
           {% endif %}
+          - git
 
 {% if grains['osmajorrelease'] == '6' %}
 /usr/share/emacs/site-lisp:
