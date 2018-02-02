@@ -77,7 +77,7 @@ https://gitlab.com/python-mode-devs/python-mode.git:
         (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-mode")
         (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-jijna2")
         (add-to-list 'load-path "/usr/share/emacs/site-lisp/salt-mode")
-        (push 'load-path "/usr/share/emacs/site-lisp/python-mode")
+        (add-to-list 'load-path "/usr/share/emacs/site-lisp/python-mode")
         
         (put 'downcase-region 'disabled nil)
         ;; Only spaces, no tabs
