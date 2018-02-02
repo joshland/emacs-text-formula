@@ -37,6 +37,25 @@ https://github.com/jrblevin/markdown-mode.git:
     - user: root
     - target: /usr/share/emacs/site-lisp/markdown-mode
 
+https://github.com/purcell/mmm-mode.git:
+  git.latest:
+    - user: root
+    - target: /usr/share/emacs/site-lisp/mmm-mode
+
+https://github.com/glynnforrest/mmm-jinja2.git:
+  git.latest:
+    - user: root
+    - target: /usr/share/emacs/site-lisp/mmm-jinja2
+
+https://github.com/glynnforrest/salt-mode.git:
+  git.latest:
+    - user: root
+    - target: /usr/share/emacs/site-lisp/salt-mode
+
+https://gitlab.com/python-mode-devs/python-mode.git:
+  git.latest:
+    - user: root
+    - target: /usr/share/emacs/site-lisp/python-mode
 
 /usr/share/emacs/site-lisp/site-start.d/themes.el:
   file.managed:
@@ -54,6 +73,10 @@ https://github.com/jrblevin/markdown-mode.git:
         (mapc 'load
         (directory-files "/usr/share/emacs/site-lisp/yaml-mode/" t "^[^#].*el$"))
         (add-to-list 'load-path "/usr/share/emacs/site-lisp/markdown-mode")
+        (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-mode")
+        (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-jijna2")
+        (add-to-list 'load-path "/usr/share/emacs/site-lisp/salt-mode")
+        (push 'load-path "/usr/share/emacs/site-lisp/python-mode")
         
         (put 'downcase-region 'disabled nil)
         ;; Only spaces, no tabs
@@ -76,17 +99,7 @@ https://github.com/jrblevin/markdown-mode.git:
         ;;Begin YAML
         (add-to-list 'auto-mode-alist '("\\.sls\\'" . yaml-mode))
               
-        (require 'yaml-mode)
-        
-        (define-derived-mode saltstack-mode yaml-mode "Saltstack"
-        "Minimal Saltstack mode, based on `yaml-mode'."
-        (setq tab-width 2
-        indent-tabs-mode nil))
-        
-        (add-to-list 'auto-mode-alist '("\\.sls\\'" . saltstack-mode))
-              
-              
-        (require 'yaml-mode)
+        (require 'salt-mode)
         (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
         
         (add-hook 'yaml-mode-hook
