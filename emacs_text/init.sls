@@ -49,9 +49,16 @@ https://github.com/glynnforrest/mmm-jinja2.git:
     - target: /usr/share/emacs/site-lisp/mmm-jinja2
 
 https://github.com/glynnforrest/salt-mode.git:
+{% if grains['os'] == 'CentOS' %}
+  git.detached:
+    - user: root
+    - target: /usr/share/emacs/site-lisp/salt-mode
+    - rev: 2e899be5fec449b3889e865197ff96f02840aca0
+{% else %}
   git.latest:
     - user: root
     - target: /usr/share/emacs/site-lisp/salt-mode
+{% endif %}
 
 https://gitlab.com/python-mode-devs/python-mode.git:
   git.latest:
