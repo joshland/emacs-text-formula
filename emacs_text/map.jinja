@@ -1,0 +1,16 @@
+{% set map = {
+    'CentOS': {
+        'filename': "CentOS-%s" % salt['grains.get']('osmajorrelease'),
+    },
+    'Fedora': {
+        'filename': "Fedora",
+    },
+    'RedHat': {
+        'filename': "Fedora",
+    },
+    'Debian': {
+        'filename': "Fedora",
+    },
+} %}
+
+{% set settings = map.get(grains.os_family) %}

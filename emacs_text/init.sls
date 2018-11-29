@@ -1,3 +1,5 @@
+{% from "emacs_text/map.jinja" import settings with context %}
+
 emacs:
     pkg.installed:
       - pkgs:
@@ -70,7 +72,7 @@ https://gitlab.com/python-mode-devs/python-mode.git:
     - user: root
     - group: root
     - mode: "0644"
-    - source: salt://emacs_text/files/themes-{{ grains['osmajorrelease'] }}.el
+    - source: salt://emacs_text/files/{{ settings['filename'] }}.el
 
 /usr/share/emacs/site-lisp/site-start.d/emacs_text.el:
   file.managed:
