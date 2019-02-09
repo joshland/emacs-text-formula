@@ -1,15 +1,24 @@
+{% set osmversion = salt['grains.get']('osmajorrelease', salt['grains.get']('osrelease_info')) %}
+{% if osmversion is iterable and osmversion is not string %}
+{% set osmversion = osmversion[0] %}
+{% endif %}
+
 {% set map = {
     'CentOS': {
-        'filename': "CentOS-%s" % salt['grains.get']('osmajorrelease'),
+      'filename': "CentOS-%s" % osmversion,
+      'release': osmversion
     },
     'Fedora': {
-        'filename': "Fedora",
-    },
+      'filename': "Fedora",
+      'release': osmversion
+      },
     'RedHat': {
-        'filename': "Fedora",
-    },
+      'filename': "Fedora",
+      'release': osmversion
+      },
     'Debian': {
-        'filename': "Fedora",
+      'filename': "Fedora",
+      'release': osmversion
     },
 } %}
 

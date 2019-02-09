@@ -12,7 +12,7 @@ emacs:
           {% endif %}
           - git
 
-{% if grains['osmajorrelease'] == '6' %}
+{% if settings['release'] == '6' %}
 /usr/share/emacs/site-lisp:
   archive.extracted:
     - archive_format: tar
