@@ -17,55 +17,55 @@ emacs:
   archive.extracted:
     - archive_format: tar
     - source: salt://emacs_text/files/color-theme-6.6.0.tar.gz
-    - if_missing: /usr/share/emacs/site-lisp/color-theme-6.6.0
+    - if_missing: {{ settings['emacs-base'] }}/color-theme-6.6.0
 {% endif %}
 
 https://github.com/purcell/color-theme-sanityinc-tomorrow.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/themes/color-theme-sanity-tomorrow
+    - target: {{ settings['emacs-base'] }}/themes/color-theme-sanity-tomorrow
 
 https://github.com/jimeh/twilight-bright-theme.el.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/themes/twilight-bright-theme
+    - target: {{ settings['emacs-base'] }}/themes/twilight-bright-theme
 
 https://github.com/yoshiki/yaml-mode.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/yaml-mode
+    - target: {{ settings['emacs-base'] }}/yaml-mode
 
 https://github.com/jrblevin/markdown-mode.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/markdown-mode
+    - target: {{ settings['emacs-base'] }}/markdown-mode
 
 https://github.com/purcell/mmm-mode.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/mmm-mode
+    - target: {{ settings['emacs-base'] }}/mmm-mode
 
 https://github.com/glynnforrest/mmm-jinja2.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/mmm-jinja2
+    - target: {{ settings['emacs-base'] }}/mmm-jinja2
 
 https://github.com/glynnforrest/salt-mode.git:
 {% if grains['os'] == 'CentOS' %}
   git.detached:
     - user: root
-    - target: /usr/share/emacs/site-lisp/salt-mode
+    - target: {{ settings['emacs-base'] }}/salt-mode
     - rev: 2e899be5fec449b3889e865197ff96f02840aca0
 {% else %}
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/salt-mode
+    - target: {{ settings['emacs-base'] }}/salt-mode
 {% endif %}
 
 https://gitlab.com/python-mode-devs/python-mode.git:
   git.latest:
     - user: root
-    - target: /usr/share/emacs/site-lisp/python-mode
+    - target: {{ settings['emacs-base'] }}/python-mode
 
 {{ settings['site-start'] }}/themes.el:
   file.managed:
@@ -81,12 +81,12 @@ https://gitlab.com/python-mode-devs/python-mode.git:
     - mode: "0644"
     - contents: |
         (mapc 'load
-        (directory-files "/usr/share/emacs/site-lisp/yaml-mode/" t "^[^#].*el$"))
-        (add-to-list 'load-path "/usr/share/emacs/site-lisp/markdown-mode")
-        (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-mode")
-        (add-to-list 'load-path "/usr/share/emacs/site-lisp/mmm-jijna2")
-        (add-to-list 'load-path "/usr/share/emacs/site-lisp/salt-mode")
-        (add-to-list 'load-path "/usr/share/emacs/site-lisp/python-mode")
+        (directory-files "{{ settings['emacs-base'] }}/yaml-mode/" t "^[^#].*el$"))
+        (add-to-list 'load-path "{{ settings['emacs-base'] }}/markdown-mode")
+        (add-to-list 'load-path "{{ settings['emacs-base'] }}/mmm-mode")
+        (add-to-list 'load-path "{{ settings['emacs-base'] }}/mmm-jijna2")
+        (add-to-list 'load-path "{{ settings['emacs-base'] }}/salt-mode")
+        (add-to-list 'load-path "{{ settings['emacs-base'] }}/python-mode")
         
         (put 'downcase-region 'disabled nil)
         ;; Only spaces, no tabs
