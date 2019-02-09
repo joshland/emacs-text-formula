@@ -67,14 +67,14 @@ https://gitlab.com/python-mode-devs/python-mode.git:
     - user: root
     - target: /usr/share/emacs/site-lisp/python-mode
 
-/usr/share/emacs/site-lisp/site-start.d/themes.el:
+{{ settings['site-start'] }}/themes.el:
   file.managed:
     - user: root
     - group: root
     - mode: "0644"
     - source: salt://emacs_text/files/{{ settings['filename'] }}.el
 
-/usr/share/emacs/site-lisp/site-start.d/emacs_text.el:
+{{ settings['site-start'] }}/emacs_text.el:
   file.managed:
     - user: root
     - group: root
